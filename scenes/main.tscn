@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://oqgf5deknu8b"]
+
+[ext_resource type="PackedScene" uid="uid://c0eoxlqwa3x2c" path="res://assets/environment/tile_map.tscn" id="1_24gsr"]
+[ext_resource type="PackedScene" uid="uid://c63pwjkwq7hgu" path="res://scenes/controllers/tile_controller.tscn" id="2_d5i6f"]
+
+[node name="Main" type="Node2D"]
+
+[node name="TileController" parent="." node_paths=PackedStringArray("player_tile_map", "enemy_tile_map") instance=ExtResource("2_d5i6f")]
+player_tile_map = NodePath("../PlayersMap")
+enemy_tile_map = NodePath("../EnemiesMap")
+
+[node name="PlayersMap" parent="." instance=ExtResource("1_24gsr")]
+position = Vector2(187, 223)
+
+[node name="EnemiesMap" parent="." instance=ExtResource("1_24gsr")]
+position = Vector2(425, 122)
