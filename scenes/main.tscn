@@ -1,16 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://oqgf5deknu8b"]
+[gd_scene load_steps=5 format=3 uid="uid://oqgf5deknu8b"]
 
 [ext_resource type="PackedScene" uid="uid://c0eoxlqwa3x2c" path="res://assets/environment/tile_map.tscn" id="1_24gsr"]
+[ext_resource type="PackedScene" uid="uid://b1scgv3qc7jdg" path="res://scenes/arena_manager.tscn" id="1_37j36"]
 [ext_resource type="PackedScene" uid="uid://c63pwjkwq7hgu" path="res://scenes/controllers/tile_controller.tscn" id="2_d5i6f"]
+[ext_resource type="PackedScene" uid="uid://cmgc0d7tn6a13" path="res://scenes/game_objects/unit.tscn" id="2_p407t"]
 
 [node name="Main" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(159, 89)
+
+[node name="ArenaManager" parent="." instance=ExtResource("1_37j36")]
+unit_object = ExtResource("2_p407t")
 
 [node name="TileController" parent="." node_paths=PackedStringArray("player_tile_map", "enemy_tile_map") instance=ExtResource("2_d5i6f")]
 player_tile_map = NodePath("../PlayersMap")
 enemy_tile_map = NodePath("../EnemiesMap")
 
 [node name="PlayersMap" parent="." instance=ExtResource("1_24gsr")]
-position = Vector2(187, 223)
+position = Vector2(58, 87)
 
 [node name="EnemiesMap" parent="." instance=ExtResource("1_24gsr")]
-position = Vector2(425, 122)
+position = Vector2(226, 6)
+
+[node name="PlayerParty" type="Node2D" parent="." groups=["PlayerParty"]]

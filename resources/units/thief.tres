@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Unit" load_steps=3 format=3 uid="uid://cmsxkcq254y7v"]
+
+[ext_resource type="Script" path="res://resources/units/unit.gd" id="1_rvb7u"]
+[ext_resource type="Texture2D" uid="uid://crr2pi8j8xwoa" path="res://assets/theif.png" id="2_y5hne"]
+
+[resource]
+script = ExtResource("1_rvb7u")
+name = "Thief"
+sprite = ExtResource("2_y5hne")
+max_health = 100

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://crr2pi8j8xwoa"
-path="res://.godot/imported/theif.png-bbb623cdbd843264e775b2298ee5e670.ctex"
+path="res://.godot/imported/theif.png-70519dba9f64d1d9a794e57976cee7b0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/game_objects/theif.png"
-dest_files=["res://.godot/imported/theif.png-bbb623cdbd843264e775b2298ee5e670.ctex"]
+source_file="res://assets/theif.png"
+dest_files=["res://.godot/imported/theif.png-70519dba9f64d1d9a794e57976cee7b0.ctex"]
 
 [params]
 

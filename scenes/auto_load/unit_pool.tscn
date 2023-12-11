@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4suq7le27ejg"]
+
+[ext_resource type="Script" path="res://scenes/auto_load/unit_pool.gd" id="1_kj68x"]
+[ext_resource type="Resource" uid="uid://cmsxkcq254y7v" path="res://resources/units/thief.tres" id="2_kl5ew"]
+
+[node name="UnitPool" type="Node"]
+script = ExtResource("1_kj68x")
+pool = Array[Resource("res://resources/units/unit.gd")]([ExtResource("2_kl5ew")])
