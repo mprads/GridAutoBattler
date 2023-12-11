@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbyy6m0pe2ylj"]
+
+[ext_resource type="Script" path="res://scenes/auto_load/party.gd" id="1_wcp21"]
+
+[node name="Party" type="Node"]
+script = ExtResource("1_wcp21")
