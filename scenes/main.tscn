@@ -8,19 +8,17 @@
 [node name="Main" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(159, 89)
+position = Vector2(160, 90)
 
-[node name="ArenaManager" parent="." instance=ExtResource("1_37j36")]
-unit_object = ExtResource("2_p407t")
-
-[node name="TileController" parent="." node_paths=PackedStringArray("player_tile_map", "enemy_tile_map") instance=ExtResource("2_d5i6f")]
-player_tile_map = NodePath("../PlayersMap")
-enemy_tile_map = NodePath("../EnemiesMap")
-
-[node name="PlayersMap" parent="." instance=ExtResource("1_24gsr")]
+[node name="PlayerTileMap" parent="." instance=ExtResource("1_24gsr")]
 position = Vector2(58, 87)
 
-[node name="EnemiesMap" parent="." instance=ExtResource("1_24gsr")]
+[node name="EnemyTileMap" parent="." instance=ExtResource("1_24gsr")]
 position = Vector2(226, 6)
 
-[node name="PlayerParty" type="Node2D" parent="." groups=["PlayerParty"]]
+[node name="TileController" parent="." instance=ExtResource("2_d5i6f")]
+
+[node name="ArenaManager" parent="." instance=ExtResource("1_37j36")]
+unit_scene = ExtResource("2_p407t")
+
+[node name="PlayerParty" type="Node" parent="." groups=["PlayerParty"]]
