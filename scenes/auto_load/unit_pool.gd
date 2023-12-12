@@ -5,3 +5,7 @@ extends Node
 
 func get_random() -> Unit:
 	return pool[0]
+
+
+func get_all() -> Array[Unit]:
+	return pool
