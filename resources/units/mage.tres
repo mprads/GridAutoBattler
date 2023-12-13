@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Unit" load_steps=3 format=3 uid="uid://bvk1mpwdjai1j"]
+
+[ext_resource type="Script" path="res://resources/units/unit.gd" id="1_0k8in"]
+[ext_resource type="Texture2D" uid="uid://k6hue4v3ddl7" path="res://assets/mage.png" id="2_xd4ui"]
+
+[resource]
+script = ExtResource("1_0k8in")
+name = "Mage"
+sprite = ExtResource("2_xd4ui")
+max_health = 100

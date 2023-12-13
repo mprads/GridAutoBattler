@@ -1,8 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4suq7le27ejg"]
+[gd_scene load_steps=6 format=3 uid="uid://c4suq7le27ejg"]
 
 [ext_resource type="Script" path="res://scenes/auto_load/unit_pool.gd" id="1_kj68x"]
 [ext_resource type="Resource" uid="uid://cmsxkcq254y7v" path="res://resources/units/thief.tres" id="2_kl5ew"]
+[ext_resource type="Resource" uid="uid://gp3xh15xenu4" path="res://resources/units/knight.tres" id="3_2kiu2"]
+[ext_resource type="Resource" uid="uid://bvk1mpwdjai1j" path="res://resources/units/mage.tres" id="4_v70lv"]
+[ext_resource type="Resource" uid="uid://b4xkfe0nlnwry" path="res://resources/units/priest.tres" id="5_xf778"]
 
 [node name="UnitPool" type="Node"]
 script = ExtResource("1_kj68x")
-pool = Array[Resource("res://resources/units/unit.gd")]([ExtResource("2_kl5ew")])
+pool = Array[Resource("res://resources/units/unit.gd")]([ExtResource("2_kl5ew"), ExtResource("3_2kiu2"), ExtResource("4_v70lv"), ExtResource("5_xf778")])

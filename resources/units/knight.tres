@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Unit" load_steps=3 format=3 uid="uid://gp3xh15xenu4"]
+
+[ext_resource type="Script" path="res://resources/units/unit.gd" id="1_3ywe1"]
+[ext_resource type="Texture2D" uid="uid://dnrw7nxumf80h" path="res://assets/knight.png" id="2_fxrxl"]
+
+[resource]
+script = ExtResource("1_3ywe1")
+name = "Knight"
+sprite = ExtResource("2_fxrxl")
+max_health = 100
