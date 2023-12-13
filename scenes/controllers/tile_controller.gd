@@ -74,28 +74,34 @@ func clear_layer(layer_name: String, tile_map) -> void:
 			tile_maps[tile_map].clear_layer(mouse_layer)
 
 
-func convert_world_position_to_id(pos: Vector2, tile_map: String) -> Vector2i:
+# Not a fan having to pass an offset because of this handling mouse clicks and unit positions
+func convert_world_position_to_id(pos: Vector2, tile_map: String, offset: Vector2) -> Vector2i:
 	if tile_map == null:
 		return Vector2i(0,0)
 
 	#Need to account for displacement of the tile map
-	return tile_maps[tile_map].local_to_map(pos - tile_maps[tile_map].global_position + Vector2(0, 16))
+	return tile_maps[tile_map].local_to_map(pos - tile_maps[tile_map].global_position + offset)
 
 
-func convert_id_to_world_position(id: Vector2i, tile_map: String) -> Vector2:
+func convert_id_to_world_position(id: Vector2i, tile_map: String, offset) -> Vector2:
 	if tile_map == null:
 		return Vector2(0,0)
 
 	#Need to account for the displacement of the tile map and half of a tile
-	return tile_maps[tile_map].global_position + tile_maps[tile_map].map_to_local(id) - Vector2(0, 16)
+	return tile_maps[tile_map].global_position + tile_maps[tile_map].map_to_local(id) - offset
 
 
 func get_tile_data(id: Vector2i, grid) -> Dictionary:
 	if grids[grid].has(str(id)):
-		return grids[grid][str(id)]
+		return {
+			"id": id,
+			"data": grids[grid][str(id)]
+			}
 
 	return {}
 
+func check_grid()-> void:
+	print(grids["player"])
 
 func update_tile_data(id: Vector2i, key: String, grid: String, value ) -> void:
 	grids[grid][str(id)][key] = value
@@ -103,4 +109,4 @@ func update_tile_data(id: Vector2i, key: String, grid: String, value ) -> void:
 
 func _on_unit_selected(unit: Node2D) -> void:
 	clear_layer("hover_layer", "player")
-	tile_maps["player"].set_cell(hover_layer, convert_world_position_to_id(unit.global_position, "player"), hover_source, selected_atlas)
+	tile_maps["player"].set_cell(hover_layer, convert_world_position_to_id(unit.global_position, "player", Vector2(0, 16)), hover_source, selected_atlas)

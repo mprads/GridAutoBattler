@@ -38,6 +38,9 @@ func set_unit_type(type: Unit) -> void:
 	unit_type = type
 
 
+func update_position(pos: Vector2) -> void:
+	global_position = pos
+
 func _set_texture() -> void:
 	sprite_2d.texture = unit_type.sprite
 

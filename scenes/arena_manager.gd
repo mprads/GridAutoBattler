@@ -16,28 +16,38 @@ func _ready() -> void:
 	_generate_party()
 
 
-func _process(delta: float) -> void:
-	pass
-
-
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click"):
 		_handle_left_click()
 
 	if event.is_action_released("left_click"):
-		GameEvents.left_click_released.emit()
+		_handle_left_click_release()
 
 
-func _handle_left_click() -> void:
-	var mouse_position = get_global_mouse_position()
+func _handle_left_click_release() -> void:
+	GameEvents.left_click_released.emit()
+	var selected_tile = _get_tile_data_from_mouse_pos()
 
-	var selected_tile = tile_controller.convert_world_position_to_id(mouse_position, "player")
-	var selected_tile_data = tile_controller.get_tile_data(selected_tile, "player")
-
-	if selected_tile_data.is_empty():
+	if !selected_tile:
 		return
 
-	var tile_has_unit = selected_tile_data["unit"]
+	if selected_tile["data"]["unit"]:
+		return
+
+	var player_tile = tile_controller.convert_world_position_to_id(selected_unit.global_position, "player", Vector2(0, 16))
+	var selected_tile_pos = tile_controller.convert_id_to_world_position(Vector2i(selected_tile["id"]), "player", Vector2(0, 16))
+
+	tile_controller.update_tile_data(Vector2i(selected_tile["id"]), "unit", "player", selected_unit)
+	tile_controller.update_tile_data(player_tile, "unit", "player", null)
+	selected_unit.update_position(selected_tile_pos)
+
+func _handle_left_click() -> void:
+	var selected_tile = _get_tile_data_from_mouse_pos()
+
+	if selected_tile["data"].is_empty():
+		return
+
+	var tile_has_unit = selected_tile["data"]["unit"]
 
 	if tile_has_unit:
 		selected_unit = tile_has_unit
@@ -45,8 +55,10 @@ func _handle_left_click() -> void:
 		return
 
 
-func _handle_right_click() -> void:
-	GameEvents.emit_right_click_pressed()
+func _get_tile_data_from_mouse_pos() -> Dictionary:
+	var mouse_position = get_global_mouse_position()
+	var selected_tile = tile_controller.convert_world_position_to_id(mouse_position, "player", Vector2(0, 0))
+	return tile_controller.get_tile_data(selected_tile, "player")
 
 
 func _generate_party():
@@ -54,7 +66,7 @@ func _generate_party():
 	for unit in resource_party:
 		var unit_instance = _generate_unit(unit)
 		var player_party = get_tree().get_first_node_in_group("PlayerParty")
-		unit_instance.global_position = tile_controller.convert_id_to_world_position(Vector2i(0, count), "player")
+		unit_instance.global_position = tile_controller.convert_id_to_world_position(Vector2i(0, count), "player", Vector2(0, 16))
 		tile_controller.update_tile_data(Vector2i(0, count), "unit", "player", unit_instance)
 
 		player_party.add_child(unit_instance)
